@@ -29,6 +29,7 @@ func main() {
 	r.GET("/posts", middleware.RequireAuth, controllers.PostsIndex)
 	r.GET("/posts/:id", middleware.RequireAuth, controllers.PostsShow)
 	r.PUT("/posts/:id", middleware.RequireAuth, controllers.PostsUpdate)
+	r.DELETE("/posts/:id", middleware.RequireAuth, controllers.PostsDelete)
 
 	r.Run()
 }

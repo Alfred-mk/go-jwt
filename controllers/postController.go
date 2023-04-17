@@ -59,7 +59,7 @@ func PostsShow(c *gin.Context) {
 	id := c.Param("id")
 
 	// get single post
-	var post []models.Post
+	var post models.Post
 	initializers.DB.First(&post, id)
 
 	// respond with the array
@@ -87,7 +87,7 @@ func PostsUpdate(c *gin.Context) {
 	}
 
 	// get single post
-	var post []models.Post
+	var post models.Post
 	initializers.DB.First(&post, id)
 
 	// Update the Post
@@ -99,5 +99,18 @@ func PostsUpdate(c *gin.Context) {
 	// respond with the array
 	c.JSON(http.StatusOK, gin.H{
 		"post": post,
+	})
+}
+
+func PostsDelete(c *gin.Context) {
+	// get id off of the URL
+	id := c.Param("id")
+
+	// Delete the Post
+	initializers.DB.Delete(&models.Post{}, id)
+
+	// respond with the array
+	c.JSON(http.StatusOK, gin.H{
+		"message": "The post has been deleted",
 	})
 }
