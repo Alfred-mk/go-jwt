@@ -52,5 +52,18 @@ func PostsIndex(c *gin.Context)  {
 	c.JSON(http.StatusOK, gin.H{
 		"posts": posts,
 	})
-	
+}
+
+func PostsShow(c *gin.Context)  {
+	// get id off of the URL
+	id := c.Param("id");
+
+	// get single post
+	var post []models.Post
+	initializers.DB.First(&post, id)
+
+	// respond with the array
+	c.JSON(http.StatusOK, gin.H{
+		"post": post,
+	})
 }
