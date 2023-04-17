@@ -28,6 +28,7 @@ func main() {
 	r.POST("/posts", middleware.RequireAuth, controllers.PostsCreate)
 	r.GET("/posts", middleware.RequireAuth, controllers.PostsIndex)
 	r.GET("/posts/:id", middleware.RequireAuth, controllers.PostsShow)
+	r.PUT("/posts/:id", middleware.RequireAuth, controllers.PostsUpdate)
 
 	r.Run()
 }
