@@ -1,5 +1,7 @@
 #GoLang application for JWT authentication
 
+This uses the Gin framework
+
 Initial setup
 1. go mod init github.com/Alfred-mk/go-jwt
 2. go get -u gorm.io/gorm
